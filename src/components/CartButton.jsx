@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function CartButton() {
+function CartButton({quantityElements}) {
     return(
         <div>
             <Link to="/cart">
@@ -38,7 +38,7 @@ function CartButton() {
                                 strokeLinejoin="round"
                             />
                         </svg>
-                        <span>3</span>
+                        <span>{quantityElements}</span>
                     </div>
                 </div>
             </Link>

@@ -2,7 +2,7 @@ import React from "react";
 import logo from "D:/PRG/www/Pizza/app/src/assets/img/pizza-logo.svg"
 import CartButton from "./CartButton";
 
-function Header() {
+function Header({quantityElements}) {
     return(
         <div>
             <div className="header">
@@ -14,7 +14,7 @@ function Header() {
                             <p>Cамая вкусная пицца во вселенной</p>
                         </div>
                     </div>
-                    <CartButton />
+                    <CartButton quantityElements={quantityElements}/>
                 </div>
             </div>
         </div>

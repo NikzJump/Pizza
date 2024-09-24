@@ -2,8 +2,9 @@ import React from "react";
 import Header from "./Header";
 import Card from "./Card";
 
-function Home({allProducts, onAddClick}) {
+function Home({allProducts, onAddClick, quantityElements}) {
     const [category, setCategory] = React.useState("")
+    const [sortParam, setSortParam] = React.useState("")
 
     const onCategClick = (category) => {
       setCategory(category)
@@ -12,7 +13,7 @@ function Home({allProducts, onAddClick}) {
     return(
         <div>
             <div className="wrapper">
-                <Header />
+                <Header quantityElements={quantityElements}/>
             <div className="content">
               <div className="container">
                 <div className="content__top">

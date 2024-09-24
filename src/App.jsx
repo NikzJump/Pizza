@@ -13,21 +13,20 @@ function App() {
       if (prod.key === cartProducts[i].key) {console.log(prod);return} 
     }
     axios.post("https://66e34a13494df9a478e4db0d.mockapi.io/cart", prod)
-    axios.get("https://66e34a13494df9a478e4db0d.mockapi.io/cart").then(res => {
-      setCartProducts(res.data)  
-    })    
+    axios.get("https://66e34a13494df9a478e4db0d.mockapi.io/cart").then(res => {setCartProducts(res.data)})    
   }
 
   React.useEffect(() => {
     axios.get("https://66e34a13494df9a478e4db0d.mockapi.io/products").then(res => setAllProducts(res.data))
+    axios.get("https://66e34a13494df9a478e4db0d.mockapi.io/cart").then(res => {setCartProducts(res.data)})    
   }, [])
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route element={<Home allProducts={allProducts} onAddClick={(prod) => onAddClick(prod)}/>} path="/" />
-          <Route element={<Cart cartProducts={cartProducts}/>} path="/cart"/>
+          <Route element={<Home allProducts={allProducts} quantityElements = {cartProducts.length} onAddClick={(prod) => onAddClick(prod)}/>} path="/" />
+          <Route element={<Cart cartProducts={cartProducts} quantityElements = {cartProducts.length}/>} path="/cart"/>
         </Routes>
       </BrowserRouter>
     </div>

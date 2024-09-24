@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "./Header";
 
-function Cart({ cartProducts }) {
+function Cart({ cartProducts, quantityElements }) {
   return (
     <div>
       <div className="wrapper">
-        <Header />
+        <Header quantityElements={quantityElements}/>
         <div className="content">
           <div className="container container--cart">
             <div className="cart">
@@ -90,7 +90,7 @@ function Cart({ cartProducts }) {
                         </div>
                         <div className="cart__item-info">
                           <h3>{prod.name}</h3>
-                          <p>тонкое тесто, 26 см.</p>
+                          <p>{`${prod.doughType}, ${prod.size} см.`}</p>
                         </div>
                         <div className="cart__item-count">
                           <div className="button button--outline button--circle cart__item-count-minus">

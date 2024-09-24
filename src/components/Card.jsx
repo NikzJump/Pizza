@@ -3,6 +3,7 @@ import React from "react";
 function Card({prod, onAdd}) {
     const [size, setSize] = React.useState(26)
     const [doughType, setDoughType] = React.useState("delicate")
+    const [count, setCount] = React.useState(0)
 
     const onAddClick = (addProd) => {       
         onAdd(addProd)
@@ -31,7 +32,7 @@ function Card({prod, onAdd}) {
                 <div className="pizza-block__price">{prod.price}</div>
                 <div onClick={() => 
                         onAddClick(
-                            {"name": prod.name, "price": prod.price, "imgUrl": prod.imgUrl, "category": prod.category, "doughType": doughType, "size": size}
+                            {"name": prod.name, "price": prod.price, "imgUrl": prod.imgUrl, "category": prod.category, "doughType": doughType, "size": size, "key": prod.key}
                         )} 
                         className="button button--outline button--add"
                     >
@@ -47,8 +48,8 @@ function Card({prod, onAdd}) {
                         fill="white"
                     />
                     </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
+                    <span onClick={() => setCount(count + 1)}>Добавить</span>
+                    {count > 0 ? <i>{count}</i>: ""}
                 </div>
             </div>
         </div>
