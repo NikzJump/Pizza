@@ -4,8 +4,8 @@ function Card({prod, onAdd}) {
     const [size, setSize] = React.useState(26)
     const [doughType, setDoughType] = React.useState("delicate")
 
-    const onAddClick = (prod) => {
-        onAdd(prod)
+    const onAddClick = (addProd) => {       
+        onAdd(addProd)
     }
 
     return(
@@ -29,7 +29,12 @@ function Card({prod, onAdd}) {
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">{prod.price}</div>
-                <div onClick={() => onAddClick(prod)} className="button button--outline button--add">
+                <div onClick={() => 
+                        onAddClick(
+                            {"name": prod.name, "price": prod.price, "imgUrl": prod.imgUrl, "category": prod.category, "doughType": doughType, "size": size}
+                        )} 
+                        className="button button--outline button--add"
+                    >
                     <svg
                         width="12"
                         height="12"

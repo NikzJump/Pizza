@@ -59,7 +59,7 @@ function Home({allProducts, onAddClick}) {
                       <div>
                         <Card
                           prod={prod}
-                          onAdd={() => onAddClick(prod)}
+                          onAdd={(addProd) => onAddClick(addProd)}
                         />
                       </div>
                     )
