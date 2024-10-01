@@ -8,12 +8,17 @@ function App() {
   const [allProducts, setAllProducts]  = React.useState([])
   const [cartProducts, setCartProducts] = React.useState([])
 
+  
+  const calcOrderSumm = () => {
+    
+  }
   const onAddClick = (prod) => {
     for (let i = 0; i < cartProducts.length; i++) {
       if (prod.key === cartProducts[i].key) {console.log(prod);return} 
     }
     axios.post("https://66e34a13494df9a478e4db0d.mockapi.io/cart", prod)
-    axios.get("https://66e34a13494df9a478e4db0d.mockapi.io/cart").then(res => {setCartProducts(res.data)})    
+    axios.get("https://66e34a13494df9a478e4db0d.mockapi.io/cart").then(res => {setCartProducts(res.data)})
+    calcOrderSumm()    
   }
 
   React.useEffect(() => {

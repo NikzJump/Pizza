@@ -2,6 +2,13 @@ import React from "react";
 import Header from "./Header";
 
 function Cart({ cartProducts, quantityElements }) {
+  const [orderSumm, setOrderSumm] = React.useState(0)
+
+  React.useEffect(() => {
+    for (let i = 0; i < cartProducts.length; i++) {
+      setOrderSumm(orderSumm + cartProducts[i].price)
+    }
+  }, [quantityElements])
   return (
     <div>
       <div className="wrapper">
@@ -161,12 +168,12 @@ function Cart({ cartProducts, quantityElements }) {
               <div className="cart__bottom">
                 <div className="cart__bottom-details">
                   <span>
-                    {" "}
-                    Всего пицц: <b>3 шт.</b>{" "}
+                    
+                    Всего пицц: <b>{cartProducts.length > 0 ? cartProducts.length: "0"} шт.</b>
                   </span>
                   <span>
-                    {" "}
-                    Сумма заказа: <b>900 ₽</b>{" "}
+                    
+                    Сумма заказа: <b>{orderSumm} ₽</b>
                   </span>
                 </div>
                 <div className="cart__bottom-buttons">
